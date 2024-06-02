@@ -44,6 +44,8 @@ namespace donetCore_beginner.Controllers
             {
                 _db.Categories.Add(obj);
                 _db.SaveChanges();
+				TempData["success"] = "新增成功";
+
 				return RedirectToAction("Index", "Category");     // 驗證通過，導回商品列表的首頁
 			}
             return View();            // 驗證不通過，停在新增頁
@@ -77,6 +79,8 @@ namespace donetCore_beginner.Controllers
 			{
 				_db.Categories.Update(obj);
 				_db.SaveChanges();
+				TempData["success"] = "更新成功";
+
 				return RedirectToAction("Index", "Category");     // 驗證通過，導回商品列表的首頁
 			}
 			return View();            // 驗證不通過，停在新增頁
@@ -108,6 +112,8 @@ namespace donetCore_beginner.Controllers
 			}
 			_db.Categories.Remove(obj);
 			_db.SaveChanges();
+			TempData["success"] = "刪除成功";
+
 			return RedirectToAction("Index", "Category");
 		}
 	}
