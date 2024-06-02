@@ -1,0 +1,62 @@
+﻿@{
+	ViewData["Title"] = "所有商品";
+}
+@model List<Category>
+
+
+<div class="container">
+	<div class="row align-items-center">
+		<div class="col-6">
+			<span class="fs-2">@ViewData["Title"]</span>
+		</div>
+		<div class="col-6 text-end">
+			<a class="btn btn-sm btn-primary" asp-area="" asp-controller="Category" asp-action="Create">
+				<i class="bi bi-plus-circle"></i> 新增商品
+			</a>
+		</div>
+	</div>
+
+	<div>
+		<span>產品列表</span>
+		<table class="table table-bordered table-striped">
+			<thead>
+				<tr>
+					<th class="col-1">CategoryID</th>
+					<th class="col-6">Name</th>
+					<th class="col-1">DisplayOrder</th>
+					<th class="col-2">更新</th>
+					<th class="col-2">刪除</th>
+				</tr>
+			</thead>
+			<tbody>
+				@foreach (var obj in Model.OrderBy(u => u.CategoryID))
+				{
+					<tr>
+						<td>@obj.CategoryID</td>
+						<td>@obj.Name</td>
+						<td>@obj.DisplayOrder</td>
+						<td>
+							<div class="btn-group" role="group">
+								<a class="btn btn-success btn-sm"
+									asp-area="" asp-controller="Category" asp-action="Edit" asp-route-id="@obj.CategoryID">
+									<i class="bi bi-pencil-square"></i>
+									<span>更新</span>
+								</a>
+							</div>
+						</td>
+						<td>
+							<div class="btn-group" role="group">
+								<a class="btn btn-danger btn-sm"
+								   asp-area="" asp-controller="Category" asp-action="Delete" asp-route-id="@obj.CategoryID">
+									<i class="bi bi-trash3"></i>
+									<span>刪除</span>
+								</a>
+							</div>
+						</td>
+					</tr>
+				}
+			</tbody>
+		</table>
+	</div>
+</div>
+

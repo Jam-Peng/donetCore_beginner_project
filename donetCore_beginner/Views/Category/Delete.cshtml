@@ -1,0 +1,31 @@
+﻿@{
+	ViewData["Title"] = "刪除商品";
+}
+@model Category
+
+<div class="container">
+	<span class="fs-2">@ViewData["Title"]</span>
+
+	<div>
+		<span class="fs-5">商品編號: @Model.CategoryID</span>
+		<form method="post">
+			<input asp-for="CategoryID" hidden/>  @* 必須要加上這個隱藏的輸入框 *@
+			<div class="pb-3">
+				<label asp-for="Name"></label>
+				<input asp-for="Name" class="form-control" disabled/>
+			</div>
+			<div class="pb-3">
+				<label asp-for="DisplayOrder"></label>
+				<input asp-for="DisplayOrder" class="form-control" disabled/>
+			</div>
+			<div class="row">
+				<div class="col-6 col-md-3">
+					<button type="submit" class="form-control btn btn-primary btn-sm">刪除</button>
+				</div>
+				<div class="col-6 col-md-3">
+					<a class="form-control btn btn-secondary btn-sm" asp-controller="Category" asp-action="Index">回商品列表</a>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
